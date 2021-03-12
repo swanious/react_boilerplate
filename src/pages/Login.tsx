@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { axiosLogin } from 'api/user';
 
 interface PropsTyped {
   email: string;
@@ -18,7 +17,7 @@ const Login = () => {
         <label htmlFor="password">비밀번호</label>
         <input value={password} name="password" type="password" />
       </form>
-      <button onClick={axiosLogin}>Login</button>
+      <button>Login</button>
     </>
   );
 };

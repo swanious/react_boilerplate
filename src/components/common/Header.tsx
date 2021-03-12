@@ -3,16 +3,32 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
-  width: 100%;
-  height: 56px;
+  top: 0;
   display: flex;
+  position: sticky;
+  width: 100%;
+  height: 48px;
   justify-content: space-between;
   align-items: center;
-
+  background-color: #2c2c2c;
+  z-index: 100;
   a {
-    text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
     padding: 0 1rem;
+    color: #c2c2c2;
+    &:hover {
+      color: #f2f2f2;
+    }
+  }
+`;
+
+const LoginButton = styled.button`
+  font-size: 14px;
+  background-color: inherit;
+  color: #c2c2c2;
+  border: none;
+  &:hover {
+    color: #f2f2f2;
   }
 `;
 
@@ -20,10 +36,9 @@ const Header = () => {
   return (
     <Wrapper>
       <Link to="/">LOGO</Link>
-      <div>
-        <Link to="/login">로그인</Link>
-        <Link to="/signup">회원가입</Link>
-      </div>
+      <Link to="/login">
+        <LoginButton>로그인을 통해 딱 맞는 분석결과를 확인하세요</LoginButton>
+      </Link>
     </Wrapper>
   );
 };

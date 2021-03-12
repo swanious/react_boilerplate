@@ -16,6 +16,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 
 // components
 import Header from 'components/common/Header';
+import Footer from 'components/common/Footer';
 
 // pages
 const Home = lazy(() => import('pages/Home'));
@@ -36,6 +37,7 @@ const IndexRouter: React.FC = (): ReactElement => {
             <Route path="/signup" component={Signup} />
           </Switch>
         </Suspense>
+        <Footer />
       </BrowserRouter>
     </ThemeProvider>
   );
