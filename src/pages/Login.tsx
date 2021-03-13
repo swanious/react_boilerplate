@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 
 interface PropsTyped {
   email: string;
@@ -8,16 +8,34 @@ interface PropsTyped {
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  useEffect(() => {
+    console.log(password);
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setEmail(e.target.value);
+  };
+
+  const handleClick = (e: FormEvent) => {
+    e.preventDefault();
+  };
 
   return (
     <>
       <form action="">
         <label htmlFor="id">아이디</label>
-        <input value={email} name="id" type="text" />
+        <input value={email} onChange={handleChange} name="id" type="text" />
         <label htmlFor="password">비밀번호</label>
-        <input value={password} name="password" type="password" />
+        <input
+          value={password}
+          onChange={handleChange}
+          name="password"
+          type="password"
+        />
+        <button onClick={handleClick} type="submit">
+          Login
+        </button>
       </form>
-      <button>Login</button>
     </>
   );
 };

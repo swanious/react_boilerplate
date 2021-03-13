@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
     ${reset};
     *, *:after, *:before {
         font-family: 'Noto Sans KR', 'Open Sans', sans-serif;
+        box-sizing: border-box;
     }
     
     html, body {
@@ -37,10 +38,10 @@ const GlobalStyle = createGlobalStyle`
         width: 4px;
     }
     ::-webkit-scrollbar-thumb {
-        
+        background-color: #222222        
     }
     ::-webkit-scrollbar-track {
-        
+        background-color: #e2e2e2;
     }
 
     /* noto-sans-kr */
