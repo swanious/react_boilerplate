@@ -1,11 +1,13 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
-
-interface PropsTyped {
-  email: string;
-  password: string;
-}
+import styled from 'styled-components';
 
 const Login = () => {
+  // style
+  const Wrapper = styled.main`
+    width: 100%;
+    height: 100vh;
+  `;
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   useEffect(() => {
@@ -16,13 +18,13 @@ const Login = () => {
     setEmail(e.target.value);
   };
 
-  const handleClick = (e: FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log;
   };
-
   return (
-    <>
-      <form action="">
+    <Wrapper>
+      <form onSubmit={handleSubmit} action="">
         <label htmlFor="id">아이디</label>
         <input value={email} onChange={handleChange} name="id" type="text" />
         <label htmlFor="password">비밀번호</label>
@@ -32,11 +34,10 @@ const Login = () => {
           name="password"
           type="password"
         />
-        <button onClick={handleClick} type="submit">
-          Login
-        </button>
+        <span></span>
+        <button type="submit">Login</button>
       </form>
-    </>
+    </Wrapper>
   );
 };
 

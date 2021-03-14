@@ -17,6 +17,7 @@ const Wrapper = styled.div`
     padding: 0 1rem;
     color: #c2c2c2;
     &:hover {
+      transition: all 0.1s ease-in-out;
       color: #f2f2f2;
     }
   }
@@ -28,6 +29,7 @@ const LoginButton = styled.button`
   color: #c2c2c2;
   border: none;
   &:hover {
+    transition: all 0.1s ease-in-out;
     color: #f2f2f2;
   }
 `;

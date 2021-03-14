@@ -1,12 +1,7 @@
-import React, {
-  DOMElement,
-  useState,
-  useEffect,
-  useRef,
-  SyntheticEvent,
-} from 'react';
+import React, { useState, useEffect, useRef, SyntheticEvent } from 'react';
 import styled from 'styled-components';
 import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
+import backgroundimg from 'assets/images/background.jpg';
 
 // components
 
@@ -21,20 +16,30 @@ const Main = styled.section`
   top: 0;
   width: 100%;
   height: 100vh;
+  position: absolute;
+  background: url(${backgroundimg});
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
+
+// 메인페이지를 absolute로 해놓으니 section1도 딸려와서
+// section1을 막아줄 임시 박스
+const Box = styled.section`
+  width: 100%;
+  height: 100vh;
   position: relative;
-  border: 1px solid white;
-  color: #f2f2f2;
+  z-index: -1;
 `;
 
 const SectionOne = styled.section`
-  top: 0;
   width: 100%;
   height: 100vh;
   position: relative;
   border: 1px solid white;
-  color: #f2f2f2;
+  h1 {
+    color: #fff;
+  }
 `;
-
 const SectionTwo = styled.section`
   width: 100%;
   height: 100vh;
@@ -55,17 +60,29 @@ const SectionThree = styled.section`
   }
 `;
 
-const ArrowButton = styled.button`
+const ButtonWrapper = styled.div`
   bottom: 0;
   width: 100%;
-  height: 40px;
-  display: flex;
+  height: 56px;
   position: absolute;
-  border: none;
-  background-color: transparent;
-  color: #f2f2f2;
+  background-color: #222222;
+`;
+
+const SlideButton = styled.button`
+  margin: 0 auto;
+  display: flex;
+  height: inherit;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+  background-color: inherit;
+  color: #b2b2b2;
+  border: none;
+
+  &:hover {
+    color: #f2f2f2;
+    transition: all 0.1s ease-in;
+  }
 `;
 
 // logic
@@ -79,7 +96,7 @@ const Home = () => {
 
   useEffect(() => {});
 
-  const onClickButton = (e: SyntheticEvent) => {
+  const handleClick = (e: SyntheticEvent) => {
     // console.log(e.currentTarget.parentElement?.clientHeight);
     let sectionHeight = sectionOne.current?.clientHeight;
 
@@ -91,11 +108,14 @@ const Home = () => {
   return (
     <Wrapper ref={wrapper}>
       <Main ref={main}>
-        <h1>MainPage</h1>
-        <ArrowButton onClick={onClickButton}>
-          <ArrowDropDown />
-        </ArrowButton>
+        <ButtonWrapper>
+          <SlideButton onClick={handleClick}>
+            <span>분석결과 확인하기</span>
+            <ArrowDropDown />
+          </SlideButton>
+        </ButtonWrapper>
       </Main>
+      <Box></Box>
       <SectionOne ref={sectionOne}>
         <h1>section_1</h1>
       </SectionOne>
